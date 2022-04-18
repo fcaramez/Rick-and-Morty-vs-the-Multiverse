@@ -29,7 +29,6 @@ class Game {
 
   start() {
     this.musicBackground.play();
-    console.log(this.frames);
     this.player = new Player(this, 460, 190, 60, 40);
     const movement = new Movement(this);
     movement.keyEvents();

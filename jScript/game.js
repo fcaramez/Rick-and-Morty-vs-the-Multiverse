@@ -3,6 +3,7 @@ class Game {
     this.canvas = document.getElementById("game");
     this.ctx = this.canvas.getContext("2d");
     this.player = null;
+    this.isRunning = false;
     this.background = new Image();
     this.frames = 0;
     this.score = 0;
@@ -28,6 +29,7 @@ class Game {
   }
 
   start() {
+    this.isRunning = true;
     this.musicBackground.play();
     this.player = new Player(this, 460, 190, 60, 40);
     const movement = new Movement(this);
@@ -35,6 +37,10 @@ class Game {
     this.intervalId = setInterval(() => {
       this.update();
     }, 1000 / 60);
+  }
+
+  reset() {
+    
   }
 
   update() {
@@ -97,6 +103,7 @@ class Game {
     this.ctx.fillText("GAME OVER", 200, 250);
     this.musicGameOver.play();
     clearInterval(this.intervalId);
+    this.isRunning = false;
   }
 
   getScore() {
